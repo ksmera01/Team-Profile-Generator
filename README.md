@@ -7,7 +7,7 @@
   ## Table of Contents
   
   - [Installation](#installation)
-  - [Testing](#testing)
+  - [Testing](#tests)
   - [Usage](#usage)
   - [License](#license)
   - [Contributors](#contributors)
@@ -29,7 +29,7 @@
 
   ## License
 
-  ![License](https://img.shields.io/badge/License-MIT-orange.svg)
+  ![License](https://img.shields.io/badge/License-Apache-orange.svg)
 
   ## Contributors
 
