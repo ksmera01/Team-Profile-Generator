@@ -10,7 +10,9 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-function promptUser() {
+newEmp = [];
+
+const startPrompt = () => {
     return inquirer.prompt([
         {
             type: "input",
@@ -32,30 +34,36 @@ function promptUser() {
             name: "managerOfficeNo",
             message: "What is your manager's office number?"
         },
-        {
-            type: "list",
-            name: "teamMemberType",
-            message: "Which type of team member would you like to add?",
-            choices: ["Engineer", "Intern", "I don't want to add any more team members"]
-        },
-    ]);
+        // {
+        //     type: "list",
+        //     name: "teamMemberType",
+        //     message: "Which type of team member would you like to add?",
+        //     choices: ["Engineer", "Intern", "I don't want to add any more team members"]
+        // },
+    ]).then(function (answer) {
+        const addManager = new Manager(answer.managerName, answer.managerId, answer.managerEmail, answer.managerOfficeNo)
+        console.log(addManager)
+        newEmp.push(addManager)
+        console.log(newEmp)
+    })
 }
 
-async function init() {
-    try {
-        const answers = await promptUser();
+startPrompt();
 
-        const newHTML = render(answers);
 
-        await writeFileAsync("index.html", newHTML);
+// async function init() {
+//     try {
+//         const answers = await promptUser();
 
-        console.log("Well done! You created a good looking README.md");
-    } catch (err) {
-        console.log(err);
-    }
-}
+//         const newHTML = render(answers);
 
-init();
+//         await writeFileAsync("index.html", newHTML);
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
+
+// init();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
