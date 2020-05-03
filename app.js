@@ -87,6 +87,10 @@ const InternPrompt = () => {
             message: "Where does your intern attend school?"
         },
     ]).then(function (answer) {
+        const addIntern = new Intern(answer.intName, answer.intId, answer.intEmail, answer.intSchool)
+        // console.log(addIntern)
+        newEmp.push(addIntern)
+        // console.log(newEmp)
         chooseMemberType();
     })
 }
@@ -114,6 +118,9 @@ const EngineerPrompt = () => {
             message: "What is your engineer's Github username?"
         },
     ]).then(function (answer) {
+        const addEngineer = new Engineer(answer.engName, answer.engId, answer.engEmail, answer.engGithub)
+        // console.log(addEngineer)
+        newEmp.push(addEngineer)
         chooseMemberType();
     })
 }
