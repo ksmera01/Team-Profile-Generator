@@ -34,17 +34,87 @@ const startPrompt = () => {
             name: "managerOfficeNo",
             message: "What is your manager's office number?"
         },
-        // {
-        //     type: "list",
-        //     name: "teamMemberType",
-        //     message: "Which type of team member would you like to add?",
-        //     choices: ["Engineer", "Intern", "I don't want to add any more team members"]
-        // },
     ]).then(function (answer) {
         const addManager = new Manager(answer.managerName, answer.managerId, answer.managerEmail, answer.managerOfficeNo)
-        console.log(addManager)
+        // console.log(addManager)
         newEmp.push(addManager)
-        console.log(newEmp)
+        // console.log(newEmp)
+        chooseMemberType();
+    })
+}
+
+const chooseMemberType = () => {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "teamMemberType",
+            message: "Which type of team member would you like to add?",
+            choices: ["Engineer", "Intern", "I don't want to add any more team members"]
+        },
+    ]).then(function (answer) {
+        if (answer.teamMemberType === "Intern") {
+            InternPrompt();
+        }
+        else if (answer.teamMemberType === "Engineer") {
+            EngineerPrompt();
+        }
+        else if (answer.teamMemberType === "I don't want to add any more team members") {
+            console.log("End")
+        }
+    })
+}
+
+const InternPrompt = () => {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "intName",
+            message: "What is your intern's name?"
+        },
+        {
+            type: "input",
+            name: "intId",
+            message: "What is your intern's id?"
+        },
+        {
+            type: "input",
+            name: "intEmail",
+            message: "What is your intern's email?"
+        },
+        {
+            type: "input",
+            name: "intSchool",
+            message: "Where does your intern attend school?"
+        },
+    ]).then(function (answer) {
+        chooseMemberType();
+    })
+}
+
+const EngineerPrompt = () => {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "engName",
+            message: "What is your engineer's name?"
+        },
+        {
+            type: "input",
+            name: "engId",
+            message: "What is your engineer's id?"
+        },
+        {
+            type: "input",
+            name: "engEmail",
+            message: "What is your engineer's email?"
+        },
+        {
+            type: "input",
+            name: "engGithub",
+            message: "What is your engineer's Github username?"
+        },
+    ]).then(function (answer) {
+        chooseMemberType();
     })
 }
 
