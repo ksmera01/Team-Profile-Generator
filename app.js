@@ -59,7 +59,7 @@ const chooseMemberType = () => {
             EngineerPrompt();
         }
         else if (answer.teamMemberType === "I don't want to add any more team members") {
-            console.log("End")
+            renderHTML();
         }
     })
 }
@@ -125,22 +125,16 @@ const EngineerPrompt = () => {
     })
 }
 
+function renderHTML() {
+    fs.writeFile(outputPath, render, function (err, data) {
+        if (err) {
+            console.error(err)
+            return
+        }
+    })
+}
+
 startPrompt();
-
-
-// async function init() {
-//     try {
-//         const answers = await promptUser();
-
-//         const newHTML = render(answers);
-
-//         await writeFileAsync("index.html", newHTML);
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
-
-// init();
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
