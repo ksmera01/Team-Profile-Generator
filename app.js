@@ -126,7 +126,7 @@ const EngineerPrompt = () => {
 }
 
 function renderHTML() {
-    fs.writeFile(outputPath, render, function (err, data) {
+    fs.writeFile(outputPath, render(newEmp), function (err, data) {
         if (err) {
             console.error(err)
             return
