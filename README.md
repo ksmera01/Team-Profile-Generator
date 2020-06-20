@@ -8,6 +8,7 @@
   
   - [Installation](#installation)
   - [Testing](#tests)
+  - [Screenshots](#screenshots)
   - [Usage](#usage)
   - [License](#license)
   - [Contributors](#contributors)
@@ -22,6 +23,9 @@
   ## Tests
   
   - Run Command: npm run test
+
+  ## Screenshots
+  ![Image description](./images/ss.png)
 
   ## Usage
 
